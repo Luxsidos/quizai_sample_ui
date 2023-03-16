@@ -83,7 +83,7 @@ class AppAppBar extends StatelessWidget with PreferredSizeWidget {
                               centerTitle ? TextAlign.center : TextAlign.start,
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: titleTextSize,
+                            fontSize: 24,
                             fontWeight: FontWeight.w600,
                             letterSpacing: -0.41,
                             height: 22 / titleTextSize,
@@ -146,7 +146,7 @@ class AppAppBar extends StatelessWidget with PreferredSizeWidget {
                               centerTitle ? TextAlign.center : TextAlign.start,
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: titleTextSize,
+                            fontSize: 24,
                             fontWeight: FontWeight.w600,
                             letterSpacing: -0.41,
                             height: 22 / titleTextSize,
@@ -156,19 +156,16 @@ class AppAppBar extends StatelessWidget with PreferredSizeWidget {
                 actions: actions ?? [],
                 backgroundColor: AppColors.mainBlue,
                 leadingWidth: showBack
-                    ? 56
+                    ? 78
                     : leading == null
                         ? 0
                         : 80,
                 leading: showBack && !showLeading
-                    ? IconButton(
+                    ? AppIconButton(
                         onPressed: () => Navigator.pop(context),
-                        icon: const Icon(
-                          Icons.arrow_back_ios,
-                          color: Colors.white,
-                        ),
+                        icon: Icons.arrow_back_ios_new_rounded,
                       )
-                    : leading ?? const SizedBox(),
+                    : leading,
               ),
       ),
     );

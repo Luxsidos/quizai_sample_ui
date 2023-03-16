@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:quizai/page/create_quiz/create_quiz_screen.dart';
 import 'package:quizai/style/app_colors.dart';
 import 'package:quizai/widget/app_icon_button.dart';
 import 'package:quizai/widget/app_scaffold.dart';
@@ -71,7 +72,7 @@ class HomePage extends StatelessWidget {
                       AppColors.orange,
                       Colors.red,
                       Colors.redAccent.shade400,
-                    ], "Create", "Quiz"),
+                    ], "Create", "Quiz", const CreateQuizPage(), context),
                     _buildColoredCard([
                       AppColors.cyan,
                       Colors.blueAccent.shade700,
@@ -113,6 +114,7 @@ class HomePage extends StatelessWidget {
                     crossAxisSpacing: 16,
                     mainAxisSpacing: 16,
                   ),
+                  physics: const BouncingScrollPhysics(),
                   children: [
                     const CategoriesWidget(
                       "Science",
@@ -134,6 +136,7 @@ class HomePage extends StatelessWidget {
                       CupertinoIcons.tree,
                       AppColors.green,
                     ),
+                    const SizedBox(),
                   ],
                 ),
               ),
@@ -144,47 +147,58 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildColoredCard(List<Color> colors, String title, String subtitle) {
-    return Container(
-      width: 168,
-      margin: const EdgeInsets.all(6),
-      padding: const EdgeInsets.all(18),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: colors),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Spacer(),
-          FittedBox(
-            child: Text(
-              title,
-              style: AppTextStyle.calendarStyle,
+  Widget _buildColoredCard(List<Color> colors, String title, String subtitle,
+      [Widget? screen, BuildContext? context]) {
+    return GestureDetector(
+      onTap: () {
+        if (screen != null && context != null) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => screen),
+          );
+        }
+      },
+      child: Container(
+        width: 168,
+        margin: const EdgeInsets.all(6),
+        padding: const EdgeInsets.all(18),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: colors),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Spacer(),
+            FittedBox(
+              child: Text(
+                title,
+                style: AppTextStyle.calendarStyle,
+              ),
             ),
-          ),
-          FittedBox(
-            child: Text(
-              subtitle,
-              style: AppTextStyle.boldWhiteTitle,
+            FittedBox(
+              child: Text(
+                subtitle,
+                style: AppTextStyle.boldWhiteTitle,
+              ),
             ),
-          ),
-          const Spacer(),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: Colors.white60,
+            const Spacer(),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Colors.white60,
+              ),
+              child: Icon(
+                Icons.arrow_forward,
+                color: colors.last,
+              ),
             ),
-            child: Icon(
-              Icons.arrow_forward,
-              color: colors.last,
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

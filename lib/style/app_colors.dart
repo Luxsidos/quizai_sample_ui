@@ -4,7 +4,7 @@ import '../widget/hexcolor.dart';
 
 abstract class AppColors {
   AppColors._();
-  static const Color white = Color(0xFFffffff);
+  static const Color white = Color.fromARGB(255, 241, 241, 241);
   static const Color primaryColor = Color.fromARGB(255, 0, 229, 255);
   static const Color secondaryColor = Color(0xFF3248DA);
   static const Color bgColorWhite = Color(0xFFFBFBFC);

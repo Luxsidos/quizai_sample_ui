@@ -192,7 +192,7 @@ class AppTextStyle {
   static const TextStyle subTitleGrey = TextStyle(
     fontSize: 17,
     height: 1.3,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w400,
     color: AppColors.greySecondary,
   );
   static TextStyle hintStyle = TextStyle(
