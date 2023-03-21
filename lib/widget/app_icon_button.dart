@@ -8,11 +8,13 @@ class AppIconButton extends StatelessWidget {
   final EdgeInsets padding;
   final GestureTapCallback onPressed;
   final IconData icon;
+  final Color color;
   const AppIconButton({
     super.key,
     this.padding = const EdgeInsets.all(0),
     required this.onPressed,
     required this.icon,
+    this.color = AppColors.mainBlue,
   });
 
   @override
@@ -23,7 +25,7 @@ class AppIconButton extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 55, 79, 212),
+          color: color,
           borderRadius: BorderRadius.circular(12),
           boxShadow: [AppShadow.buttonEffect],
         ),

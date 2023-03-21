@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: const OnboardingPage(),
       theme: ThemeData(
+        listTileTheme: ListTileThemeData(iconColor: Colors.white),
         primaryColor: AppColors.mainBlue,
         iconTheme: const IconThemeData(color: AppColors.mainBlue),
       ),

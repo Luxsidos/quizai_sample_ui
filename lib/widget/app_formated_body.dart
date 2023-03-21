@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quizai/style/app_colors.dart';
 import 'package:get/get.dart';
@@ -6,7 +5,18 @@ import 'package:quizai/widget/app_shadow.dart';
 
 class AppFormatedBody extends StatelessWidget {
   final Widget child;
-  const AppFormatedBody({super.key, required this.child});
+  final EdgeInsets padding;
+  final bool isInfinity;
+  final double height;
+  final bool isCircular;
+  const AppFormatedBody({
+    super.key,
+    required this.child,
+    this.padding = const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+    this.isInfinity = false,
+    this.isCircular = false,
+    this.height = 80,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,16 +26,29 @@ class AppFormatedBody extends StatelessWidget {
         Align(
           alignment: Alignment.topCenter,
           child: Container(
-            height: 80,
-            color: AppColors.mainBlue,
+            height: height,
+            decoration: BoxDecoration(
+              color: AppColors.mainBlue,
+              borderRadius: isCircular
+                  ? const BorderRadius.vertical(
+                      bottom: Radius.circular(14),
+                    )
+                  : null,
+            ),
           ),
         ),
         Column(
           children: [
             Expanded(
               child: Container(
-                margin: const EdgeInsets.all(16),
-                padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 24),
+                margin: isInfinity
+                    ? const EdgeInsets.only(
+                        left: 16,
+                        right: 16,
+                        top: 16,
+                      )
+                    : const EdgeInsets.all(16),
+                padding: padding,
                 width: context.width,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -35,10 +58,12 @@ class AppFormatedBody extends StatelessWidget {
                 child: child,
               ),
             ),
-            const SafeArea(
-              top: false,
-              child: SizedBox.shrink(),
-            ),
+            isInfinity
+                ? const SizedBox.shrink()
+                : const SafeArea(
+                    top: false,
+                    child: SizedBox.shrink(),
+                  ),
           ],
         )
       ],

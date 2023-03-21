@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
+import 'package:quizai/page/dashboard/dashboard_screen.dart';
+import 'package:quizai/page/home/home_screen.dart';
+import 'package:quizai/page/notification/notification_screen.dart';
 import 'package:quizai/style/app_colors.dart';
 import 'package:quizai/widget/app_app_bar.dart';
+import 'package:quizai/widget/app_icon_button.dart';
 
 class AppScaffold extends StatelessWidget {
-  const AppScaffold({
+  AppScaffold({
     Key? key,
     required this.body,
+    this.mainPages = false,
     this.appBarTitle,
     this.withBackButton = true,
     this.bottomNavigation,
@@ -28,6 +34,7 @@ class AppScaffold extends StatelessWidget {
   final Widget body;
   final String? appBarTitle;
   final bool withBackButton;
+  final bool mainPages;
   final Widget? bottomNavigation;
   final Widget? trailingAppBar;
   final Widget? bottomSheet;
@@ -41,6 +48,7 @@ class AppScaffold extends StatelessWidget {
   final String subTitle;
   final Color backgroundColor;
   final Color appBarBackground;
+
   final String subTitleDesc;
   final double? appBarHeight;
   final ScrollPhysics? scrollPhysics;
@@ -49,7 +57,7 @@ class AppScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: extendBodyBehindAppBar,
-      appBar: appBarTitle == null ? null : buildAppAppBar(),
+      appBar: appBarTitle == null ? null : buildAppAppBar(context),
       backgroundColor: backgroundColor,
       body: body,
       bottomNavigationBar: bottomNavigation,
@@ -59,7 +67,7 @@ class AppScaffold extends StatelessWidget {
     );
   }
 
-  AppAppBar buildAppAppBar() {
+  AppAppBar buildAppAppBar(BuildContext context) {
     return AppAppBar(
       title: appBarTitle ?? '',
       showBack: withBackButton,
@@ -68,14 +76,33 @@ class AppScaffold extends StatelessWidget {
       bottomsize: bottomSize,
       bottomtitle: subTitle,
       subtitle: subTitleDesc,
-      leading: leading,
+      leading: mainPages
+          ? AppIconButton(
+              onPressed: () {
+                advancedDrawerController.showDrawer();
+              },
+              icon: Icons.grid_view_rounded,
+            )
+          : leading,
       backgroundColor: appBarBackground,
       flexibleSpace: flexibleSpace,
-      actions: trailingAppBar == null
-          ? []
-          : [
-              trailingAppBar!,
-            ],
+      actions: mainPages
+          ? [
+              AppIconButton(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const NotificationPage()),
+                ),
+                icon: Icons.notifications,
+              )
+            ]
+          : trailingAppBar == null
+              ? []
+              : [
+                  trailingAppBar!,
+                ],
     );
   }
 }

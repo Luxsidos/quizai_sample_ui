@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:quizai/page/create_quiz/create_quiz_screen.dart';
+import 'package:quizai/page/join_quiz/join_quiz_screen.dart';
 import 'package:quizai/style/app_colors.dart';
 import 'package:quizai/widget/app_icon_button.dart';
 import 'package:quizai/widget/app_scaffold.dart';
@@ -16,16 +17,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      leading: AppIconButton(
-        onPressed: () {},
-        icon: Icons.grid_view_rounded,
-      ),
       appBarTitle: "",
-      trailingAppBar: AppIconButton(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        onPressed: () {},
-        icon: Icons.notifications,
-      ),
+      mainPages: true,
       flexibleSpace: FlexibleSpaceBar(
         centerTitle: false,
         title: Column(
@@ -77,7 +70,7 @@ class HomePage extends StatelessWidget {
                       AppColors.cyan,
                       Colors.blueAccent.shade700,
                       AppColors.mainBlue,
-                    ], "Join in", "Quiz"),
+                    ], "Join in", "Quiz", const JoinQuizPage(), context),
                     _buildColoredCard([
                       Colors.greenAccent,
                       Colors.green.shade400,

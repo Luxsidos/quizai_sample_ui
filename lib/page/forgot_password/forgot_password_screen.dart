@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:quizai/page/dashboard/darshboard_screen.dart';
+import 'package:quizai/page/dashboard/dashboard_screen.dart';
 import 'package:quizai/style/app_colors.dart';
 import 'package:quizai/widget/app_scaffold.dart';
 import 'package:quizai/widget/app_text_field.dart';
@@ -42,7 +42,7 @@ class ForgotPasswordPage extends StatelessWidget {
                   onTap: () => Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const DasboardScreen(),
+                      builder: (context) => const DashboardPage(),
                     ),
                     (route) => false,
                   ),

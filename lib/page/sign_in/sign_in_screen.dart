@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:quizai/page/dashboard/darshboard_screen.dart';
+import 'package:quizai/page/dashboard/dashboard_screen.dart';
 import 'package:quizai/page/forgot_password/forgot_password_screen.dart';
 import 'package:quizai/page/home/home_screen.dart';
 import 'package:quizai/page/sign_up/sign_up_screen.dart';
@@ -121,7 +121,7 @@ class _SignInPageState extends State<SignInPage> {
                     onTap: () => Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const DasboardScreen(),
+                        builder: (context) => const DashboardPage(),
                       ),
                       (route) => false,
                     ),

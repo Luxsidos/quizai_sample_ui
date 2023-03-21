@@ -11,24 +11,26 @@ class AppPrimaryButton extends StatelessWidget {
     required this.onTap,
     this.label,
     this.loading = false,
+    this.color = AppColors.mainBlue,
+    this.padding = const EdgeInsets.all(0),
   }) : super(key: key);
   final VoidCallback onTap;
   final String? label;
   final bool loading;
+  final Color color;
+  final EdgeInsets padding;
 
   @override
   Widget build(BuildContext context) {
-    return Hero(
-      tag: "primary_button",
-      child: _AnimatedButton(
-        pressEvent: loading ? null : onTap,
-        text: label,
-        buttonTextStyle: AppTextStyle.mainWhiteStyle,
-        borderRadius: BorderRadius.circular(15),
-        color: AppColors.mainBlue,
-        height: 60,
-        loading: loading,
-      ),
+    return _AnimatedButton(
+      pressEvent: loading ? null : onTap,
+      text: label,
+      buttonTextStyle: AppTextStyle.mainWhiteStyle,
+      borderRadius: BorderRadius.circular(15),
+      color: color,
+      height: 60,
+      loading: loading,
+      padding: padding,
     );
   }
 }
@@ -43,6 +45,7 @@ class _AnimatedButton extends StatefulWidget {
   final BorderRadiusGeometry? borderRadius;
   final TextStyle? buttonTextStyle;
   final bool loading;
+  final EdgeInsets padding;
 
   const _AnimatedButton({
     required this.pressEvent,
@@ -52,6 +55,7 @@ class _AnimatedButton extends StatefulWidget {
     this.isFixedHeight = true,
     this.width = double.infinity,
     this.borderRadius,
+    this.padding = const EdgeInsets.all(0),
     this.buttonTextStyle,
     this.loading = false,
   });
@@ -115,9 +119,10 @@ class _AnimatedButtonState extends State<_AnimatedButton>
     );
   }
 
-  Widget get _animatedButtonUI => SizedBox(
+  Widget get _animatedButtonUI => Container(
         width: widget.width,
         height: widget.isFixedHeight ? 50 : widget.height,
+        padding: widget.padding,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
               elevation: 0.0,

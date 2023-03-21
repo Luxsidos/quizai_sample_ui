@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:quizai/page/dashboard/darshboard_screen.dart';
+import 'package:quizai/page/dashboard/dashboard_screen.dart';
 import 'package:quizai/page/home/home_screen.dart';
 import 'package:quizai/page/sign_in/sign_in_screen.dart';
 import 'package:quizai/style/app_colors.dart';
@@ -91,7 +91,7 @@ class SignUpPage extends StatelessWidget {
                     onTap: () => Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const DasboardScreen(),
+                        builder: (context) => const DashboardPage(),
                       ),
                       (route) => false,
                     ),

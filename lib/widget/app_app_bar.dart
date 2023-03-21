@@ -154,7 +154,7 @@ class AppAppBar extends StatelessWidget with PreferredSizeWidget {
                         ),
                 centerTitle: centerTitle,
                 actions: actions ?? [],
-                backgroundColor: AppColors.mainBlue,
+                backgroundColor: backgroundColor,
                 leadingWidth: showBack
                     ? 78
                     : leading == null
@@ -164,6 +164,10 @@ class AppAppBar extends StatelessWidget with PreferredSizeWidget {
                     ? AppIconButton(
                         onPressed: () => Navigator.pop(context),
                         icon: Icons.arrow_back_ios_new_rounded,
+                        color: backgroundColor != AppColors.mainBlue
+                            ? (backgroundColor ?? AppColors.mainBlue)
+                                .withBlue(120)
+                            : AppColors.mainBlue,
                       )
                     : leading,
               ),
