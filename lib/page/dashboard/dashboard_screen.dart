@@ -15,7 +15,7 @@ import 'package:quizai/widget/app_scaffold.dart';
 import 'package:quizai/widget/app_shadow.dart';
 import 'package:quizai/widget/app_text_style.dart';
 
-late AdvancedDrawerController advancedDrawerController;
+AdvancedDrawerController advancedDrawerController = AdvancedDrawerController();
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -26,20 +26,6 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   int tabIndex = 0;
-
-  @override
-  void initState() {
-    advancedDrawerController = AdvancedDrawerController();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    advancedDrawerController.removeListener(() {});
-    advancedDrawerController.dispose();
-
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +54,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 14.0),
                   child: CupertinoButton(
-                    padding:const EdgeInsets.all(0),
+                    padding: const EdgeInsets.all(0),
                     onPressed: () {
                       setState(() {
                         tabIndex = 3;
