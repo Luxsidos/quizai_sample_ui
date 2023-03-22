@@ -28,7 +28,7 @@ class QuizFinishedPage extends StatelessWidget {
         onPressed: () => Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
-              builder: (context) => const DashboardPage(),
+              builder: (context) => DashboardPage(),
             ),
             (route) => false),
       ),
@@ -145,7 +145,8 @@ class QuizFinishedPage extends StatelessWidget {
             children: [
               SafeArea(
                 bottom: false,
-                child: SizedBox(height: MediaQuery.of(context).size.height * 0.022),
+                child: SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.022),
               ),
               Align(
                 alignment: Alignment.topCenter,

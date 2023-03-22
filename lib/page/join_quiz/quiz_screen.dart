@@ -84,7 +84,7 @@ class _CreateQuizStepsPageState extends State<QuizPage> {
               onPressed: () => Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const DashboardPage(),
+                  builder: (context) =>  DashboardPage(),
                 ),
                 (route) => false,
               ),

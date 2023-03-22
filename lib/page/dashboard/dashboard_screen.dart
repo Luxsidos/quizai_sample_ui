@@ -11,7 +11,6 @@ import 'package:quizai/page/refer_a_friend/refer_a_friend_screen.dart';
 import 'package:quizai/page/setting/setting_screen.dart';
 import 'package:quizai/page/sign_in/sign_in_screen.dart';
 import 'package:quizai/style/app_colors.dart';
-import 'package:quizai/widget/app_scaffold.dart';
 import 'package:quizai/widget/app_shadow.dart';
 import 'package:quizai/widget/app_text_style.dart';
 
@@ -26,6 +25,15 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   int tabIndex = 0;
+
+  @override
+  void initState() {
+    debugPrint('INITING!!!');
+
+    advancedDrawerController = AdvancedDrawerController();
+    // advancedDrawerController.addListener(() {});
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

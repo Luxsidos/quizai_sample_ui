@@ -27,7 +27,7 @@ class CreateQuizFinishedPage extends StatelessWidget {
         onPressed: () => Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
-              builder: (context) => const DashboardPage(),
+              builder: (context) =>  DashboardPage(),
             ),
             (route) => false),
       ),

@@ -42,7 +42,7 @@ class ForgotPasswordPage extends StatelessWidget {
                   onTap: () => Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const DashboardPage(),
+                      builder: (context) =>  DashboardPage(),
                     ),
                     (route) => false,
                   ),
